@@ -12,6 +12,7 @@ const opts = {
 
 const channelName = 'ponchi_one'
 const client = new tmi.client(opts);
+
 client.on('connected', onConnectedHandler);
 client.connect();
 
@@ -20,16 +21,15 @@ client.on('chat', (channel, user, message, self) => {
   if (self) {return;}
   if (user['username'] === client.getUsername()){
     return;
-  } else 
+  }
   if (commandName.includes('что за сервер') || 
   commandName.includes('какой сервер') || commandName.includes('!Сервер') || commandName.includes('!сервер') || 
   commandName.includes('что за сервак') || commandName.incudes('какой сервак') || commandName.includes('!server') || commandName.includes('!Server')) {
-    client.action(channelName, `@${user['display-name']} L2 Essence, ruoff, Server: White`);
+    client.say(channelName, `@${user['display-name']} L2 Essence, Server: White, ruoff`);
     console.log(`* Executed ${commandName} command`);
   }
 });
 
-// Called every time the bot connects to Twitch chat
 function onConnectedHandler (addr, port) {
   console.log(`* Connected to ${addr}:${port}`);
 }

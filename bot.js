@@ -10,41 +10,26 @@ const opts = {
   ]
 };
 
-const channelName = 'garfick';
-
+const channelName = 'ponchi_one'
 const client = new tmi.client(opts);
+
 client.on('connected', onConnectedHandler);
 client.connect();
 
-client.on('chat', (channel, user, message, self) => {
+client.on('chat', (channel, user, message, self) => {  
   const commandName = message.trim();
-  const emoteName = 'SmugDance';
-  var list = [];
-  var msg = '';
-  
   if (self) {return;}
   if (user['username'] === client.getUsername()){
     return;
   }
-  
-  if (commandName === 'Хочу пирамидку' || commandName === 'хочу пирамидку') {
-    for(var i = 0; i < 5; i++) {
-      list.push(emoteName);
-      msg = list.join(' ');
-      client.say(channelName, msg);
-    }
-    for (var i = 0; i < 4; i++) {
-      list.pop();
-      msg = list.join(' ');
-      client.say(channelName, msg);
-    }
-    
-    client.say(channelName, `@${user['display-name']} Jebaited Эта пирамидка для тебя <3`);
+  if (commandName.includes('что за сервер') || 
+  commandName.includes('какой сервер') || commandName.includes('!Сервер') || commandName.includes('!сервер') || 
+  commandName.includes('что за сервак') || commandName.incudes('какой сервак') || commandName.includes('!server') || commandName.includes('!Server')) {
+    client.say(channelName, `@${user['display-name']} L2 Essence, Server: White, ruoff`);
     console.log(`* Executed ${commandName} command`);
   }
 });
 
-// Called every time the bot connects to Twitch chat
 function onConnectedHandler (addr, port) {
   console.log(`* Connected to ${addr}:${port}`);
 }
