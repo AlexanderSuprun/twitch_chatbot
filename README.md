@@ -1,1 +1,1 @@
-# test_chatbot
+# Simple twitch chatbot
