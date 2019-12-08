@@ -1,55 +1,43 @@
-const tmi = require('tmi.js');
+const tmi = require("tmi.js");
 
 const opts = {
   identity: {
     username: process.env.BOT_USERNAME,
     password: process.env.OAUTH_TOKEN
   },
-  channels: [
-    process.env.CHANNEL_NAME
-  ]
+  channels: [process.env.CHANNEL_NAME]
 };
 
-const channelName = 'garfick';
-
+var channelName = process.env.CHANNEL_NAME;
 const client = new tmi.client(opts);
-client.on('connected', onConnectedHandler);
-client.connect();
+client.on("message", onMessageHandler);
+client.on("connected", onConnectedHandler);
+//client.on("raided", onRaided);
 
-client.on('chat', (channel, user, message, self) => {
-  const commandName = message.trim();
-  const emoteName = 'SmugDance';
-  var list = [];
-  var msg = '';
-  
-  if (self) {return;}
-  if (user['username'] === client.getUsername()){
+client.connect();
+function onMessageHandler(target, context, msg, self) {
+  if (self) {
+    // Ignore messages from the bot
     return;
   }
-  
-  if (commandName === 'Хочу пирамидку' || commandName === 'хочу пирамидку') {
-    for(var i = 0; i < 5; i++) {
-      list.push(emoteName);
-      msg = list.join(' ');
-      client.say(channelName, msg);
-    }
-    for (var i = 0; i < 4; i++) {
-      list.pop();
-      msg = list.join(' ');
-      client.say(channelName, msg);
-    }
-    
-    client.say(channelName, `@${user['display-name']} Jebaited Эта пирамидка для тебя <3`);
-    console.log(`* Executed ${commandName} command`);
-  }
-});
 
-// Called every time the bot connects to Twitch chat
-function onConnectedHandler (addr, port) {
-  console.log(`* Connected to ${addr}:${port}`);
+  if (context["custom-reward-id"] == "5f6a55b8-43a0-4794-91f6-951ac97c2e1b") {
+    // defines reward id
+    client.timeout(channelName, context["username"], 600)
+      .catch((err) => {});
+    console.log(`* Command executed`);
+  }
 }
 
-client.on('disconnected', (reason) => {
-  console.log('Disconnected from server ' + reason);
-  client.connect();
-});
+// function onRaided(channel, username, viewers) {
+//   let start = Date.now();
+//   client.followersonlyoff(channelName);
+
+//   if (Date.now() - start == 600000) {
+//     client.followersonly(channelName, 10);
+//   }
+// }
+
+function onConnectedHandler(addr, port) {
+  console.log(`* Connected to ${addr}:${port}`);
+}
