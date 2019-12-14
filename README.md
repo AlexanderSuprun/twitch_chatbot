@@ -1,1 +1,1 @@
-# Simple twitch chatbot
+# Twitch chatbot
