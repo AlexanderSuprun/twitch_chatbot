@@ -5,14 +5,13 @@ const opts = {
     username: process.env.BOT_USERNAME,
     password: process.env.OAUTH_TOKEN
   },
-  channels: [process.env.CHANNEL_NAME]
+  channels: ["romanovalera"]
 };
 
-var channelName = process.env.CHANNEL_NAME;
+var channelName = "romanovalera";
 const client = new tmi.client(opts);
 client.on("message", onMessageHandler);
 client.on("connected", onConnectedHandler);
-//client.on("raided", onRaided);
 
 client.connect();
 function onMessageHandler(target, context, msg, self) {
@@ -28,15 +27,6 @@ function onMessageHandler(target, context, msg, self) {
     console.log(`* Command executed`);
   }
 }
-
-// function onRaided(channel, username, viewers) {
-//   let start = Date.now();
-//   client.followersonlyoff(channelName);
-
-//   if (Date.now() - start == 600000) {
-//     client.followersonly(channelName, 10);
-//   }
-// }
 
 function onConnectedHandler(addr, port) {
   console.log(`* Connected to ${addr}:${port}`);
