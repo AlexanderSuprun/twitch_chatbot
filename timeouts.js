@@ -27,7 +27,8 @@ client.on('chat', (channel, user, message, self) => {
     if (commandName.includes(' нигер ') || commandName.includes(' нига ') ||  commandName.includes(' негр ') ||
     commandName.includes(' пидор ') ||  commandName.includes(' пидар ') ||  commandName.includes(' пидорас ') ||  commandName.includes(' пидарас ') ||
     commandName.includes(' pidor ') || commandName.includes(' пидр ') || 
-    commandName.includes(' pidr ') ||  commandName.includes(' nigga ')) {
+    commandName.includes(' pidr ') ||  commandName.includes(' nigga ') ||  commandName.includes(' 3.14дор ') ||  commandName.includes(' 3.14дар ') ||
+    commandName.includes(' 3.14др ')) {
       client.timeout(channelName, "@${user['name']}", 2);
       console.log(`* Executed ${commandName} command`);
     }
