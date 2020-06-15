@@ -5,10 +5,10 @@ const opts = {
     username: process.env.BOT_USERNAME,
     password: process.env.OAUTH_TOKEN
   },
-  channels: ["romanovalera"]
+  channels: ["channelName"]
 };
 
-var channelName = "romanovalera";
+var channelName = "";
 const client = new tmi.client(opts);
 client.on("message", onMessageHandler);
 client.on("connected", onConnectedHandler);
