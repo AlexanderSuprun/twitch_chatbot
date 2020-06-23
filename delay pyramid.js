@@ -28,7 +28,7 @@ client.on('chat', (channel, user, message, self) => {
     return;
   }
   
-  if (commandName === 'Хочу пирамидку' || commandName === 'хочу пирамидку') {
+  if (commandName.toLowerCase() === 'хочу пирамидку') {
     function firstHalf() {
       for(var i = 0; i < 5; i++) {
         setTimeout(function () {
