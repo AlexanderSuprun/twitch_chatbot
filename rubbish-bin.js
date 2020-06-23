@@ -22,7 +22,7 @@ client.on('chat', (channel, user, message, self) => {
   // if (user['username'] === client.getUsername()){
   //   return;
   // }
-  if (commandName.toLowerCase.includes('что за сервер'))) {
+  if (commandName.toLowerCase().includes('что за сервер'))) {
     client.say(channelName, `@${user['display-name']} L2 Essence, Server: White, ruoff`);
     console.log(`* Executed ${commandName} command`);
   }
