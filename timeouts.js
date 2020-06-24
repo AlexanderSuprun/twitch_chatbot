@@ -62,9 +62,7 @@ function onConnectedHandler (addr, port) {
 //     return;
 //   }
 //   //console.log(user['message-type'], user['username'], message);
-//   if (commandName.includes(' пидр ') || commandName.includes(' пидор ') || commandName.includes(' пидарас ') ||
-//       commandName.includes(' пидар ') || commandName.includes(' нига ') || commandName.includes(' нигга ') || 
-//       commandName.includes(' ниггер ') || commandName.includes(' нигер ')) {
+//   if (commandName.includes("") {
 //     client.timeout('channelName', user['username'], 600);
 //     console.log(`* Executed ${commandName} command`);
 //   }
