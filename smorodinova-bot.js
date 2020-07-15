@@ -24,18 +24,12 @@ function onMessageHandler(target, context, message, self) {
     client.timeout(channelName, user, 600)
       .catch((err) => {});
     
-    console.log(`* Command executed (timeout)`);
-    console.log(user);
-    
   } else if (context["custom-reward-id"] == "cf9e5931-c1ab-444b-b8aa-9bbdac20cbef") { //unban
     let user = commandName.split("@")[1];
     if (!user) return;
     if (user.indexOf(" ") !== -1) user = user.substring(0, user.indexOf(" "));
     client.unban(channelName, user)
     .catch((err) => {});
-    
-    console.log(`* Command executed (unban)`);
-    console.log(user);
   }
 }
   //'custom-reward-id': 'cd56e607-333e-47b6-8c5a-cc552c45daac' - timeout id
