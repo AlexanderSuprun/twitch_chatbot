@@ -5,7 +5,7 @@ const opts = {
     username: process.env.BOT_USERNAME,
     password: process.env.OAUTH_TOKEN
   },
-  channels: [""]
+  channels: ["smorodinova"]
 };
 
 var channelName = process.env.CHANNEL_NAME;
